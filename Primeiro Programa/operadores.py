@@ -1,4 +1,4 @@
-# Operadores Matematicos
+# Operadores Matematicos ARITIMETICOS
 # ADIÇÃO
 # print(4+2)
 # SUBTRAÇAO
@@ -19,7 +19,7 @@
 
 # print(num1 + num2)
 
-# abreviação de Operadores
+# abreviação de Operadores - Atribuição
 x = 2
 print(x)  # aqui ele imprime o valor de 2
 # X = x + X
@@ -27,3 +27,6 @@ x += 4
 print(x)  # aqui ele imprime o soma da variavel + 4 = 6
 x -= 2
 print(x)  # resultado = 4
+
+# contatenar
+# print("ola" + "mundo")
