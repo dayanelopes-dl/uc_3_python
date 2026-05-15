@@ -7,7 +7,7 @@ BEM COMO A MEDIA ARITIMETICA DOS PREÇOS INFORMADOS '''
    
 media_preco = 0
    
-medicamento = input("informe o medicamento") 
+medicamento = input("informe o medicamento: ") 
 preco = float(input("informe o preço: "))
 nome_medicamento = medicamento
 menor_preco = preco
