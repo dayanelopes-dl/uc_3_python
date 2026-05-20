@@ -1,4 +1,4 @@
-def somatoria (*argumento):
+def somatoria (*argumento):   # BLOCO SOMATORIA
     soma = 0
     for i in argumento:
         soma += i
