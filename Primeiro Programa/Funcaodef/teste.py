@@ -13,7 +13,7 @@ def cadastrar_hospede():
         print("1 - Standard R$120")
         print("2 - Luxo R$250")
         print("3 - Premium R$400")
-
+        
         opcao_quarto = input("Escolha o tipo de quarto: ")
 
         tipos = {
@@ -39,6 +39,7 @@ def cadastrar_hospede():
         return
 
 
+
 def calcular_valor_hospedagem(hospede):
     valores = {
         "standard": 120,
@@ -62,6 +63,8 @@ def verificar_situacao_quarto(valor_total):
         return "Premium"
 
 
+
+
 def menu():
     print(" SISTEMA DE CONTROLE DE HÓSPEDES ")
     print("-" * 30)
@@ -80,6 +83,7 @@ def menu():
             if hospede:
                 valor_total = calcular_valor_hospedagem(hospede)
                 situacao = verificar_situacao_quarto(valor_total)
+                print("-"*30)
 
                 print(" DADOS DA HOSPEDAGEM ")
                 print(f"Nome: {hospede['nome']}")
@@ -87,12 +91,15 @@ def menu():
                 print(f"Diárias: {hospede['quantidade de diarias']}")
                 print(f"Valor total: R$ {valor_total:.2f}")
                 print(f"Categoria: {situacao}")
+                print("-"*30)
 
         elif opcao == "2":
+            print("-"*30)
             print("Quartos disponíveis:")
             print("1 - Standard - R$ 120")
             print("2 - Luxo - R$ 250")
             print("3 - Premium - R$ 400")
+            print("-"*30)
 
         elif opcao == "3":
             print("Saindo do sistema...")
