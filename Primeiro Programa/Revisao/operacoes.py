@@ -1,0 +1,1 @@
+# == igual - != diferente que - < menor - > maior - <= menor igual - >= maior igual
