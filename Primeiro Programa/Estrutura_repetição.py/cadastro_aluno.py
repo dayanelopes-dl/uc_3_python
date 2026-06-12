@@ -11,7 +11,7 @@ for x in range(qtd_alunos):
     idade = int(input("Idade: "))           
     sexo = input("Sexo: ")
     serie = input("Série: ")
-    alunos.append({"nome": aluno, "idade": idade, "sexo": sexo, "serie": serie}) 
+    
     print("-" * 30)   
 
     
@@ -19,8 +19,8 @@ for x in range(qtd_alunos):
 
     qtd = int(input("Quantas disciplinas deseja cadastrar? "))
 
-    for x in range(qtd):
-        print(f"Disciplina {x + 1} ")
+    for y in range(qtd):
+        print(f"Disciplina {y + 1} ")
 
         nome_disciplina = input("Nome da disciplina: ")
 
@@ -32,16 +32,35 @@ for x in range(qtd_alunos):
 
         media = sum(notas) / 4
         print(f"A média da disciplina {nome_disciplina} é: {media:.2f}")
-        disciplinas.append({"disciplina": nome_disciplina, "media": media})   
-        print("-" * 30)
-        
+
+        disciplinas.append({
+            "disciplina": nome_disciplina,
+            "media": media
+        })
+
+    alunos.append({
+        "nome": aluno,
+        "idade": idade, 
+        "sexo": sexo,
+        "serie": serie,
+        "disciplinas": disciplinas
+    })
+    
+    print("-" * 30)
+
                
-
-
 print("relatório de alunos cadastrados:")
 print("-" * 30)
+
 for aluno in alunos:
-    print(f"Nome: {aluno['nome']}, Idade: {aluno['idade']}, Sexo: {aluno['sexo']}, Série: {aluno['serie']}")
-    for disciplina in disciplinas:
-        print(f"Disciplina: {disciplina['disciplina']}, Média: {disciplina['media']:.2f}") 
+    print(f"Nome: {aluno['nome']}")
+    print(f"Idade: {aluno['idade']}")
+    print(f"Sexo: {aluno['sexo']}")
+    print(f"Série: {aluno['serie']}")
+
+    print("Disciplinas:")
+
+    for disciplina in aluno["disciplinas"]:
+        print(f"  - {disciplina['disciplina']}: Média = {disciplina['media']:.2f}")
+    print("-" * 30)
         

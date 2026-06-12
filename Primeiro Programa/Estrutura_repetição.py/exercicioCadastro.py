@@ -2,44 +2,38 @@ print("## Cadastro de Aluno ##")
 print("-"*30)
 
 alunos = []
-
-
+disciplinas = []
+notas = []
 while True:
-
-   alunos = {
-    "nome": input("aluno: "),
-    "idade": int(input("idade:")),
-    "sexo": input("sexo: "),
-    "serie": input("serie: "),
-    "diciplina" : []
-   }
-   break
-    
-while True: 
-    nome_disciplina = input("Disciplina: ")
-    if nome_disciplina.upper() ==  0:
+    nome = input("Nome do aluno (ou sair para parar): ").strip()
+    if nome.lower() == "sair":
         break
-
-    notas = []
-    for x in range(1, 5):
-        nota = float(input(f"Informe a {x}ª nota: "))
-        notas.append(nota)
-    media = sum(notas) / 4
-    print(f"A média da disciplina {nome_disciplina} é: {media:.2f}")
-
+    idade = int(input("Idade: "))
+    sexo = input("Sexo: ")              
+    serie = input("Série: ")
+    alunos.append((nome, idade, sexo, serie))
     print("-"*30)
+    
+    while True:
+        nome_disciplina = input("Informe o nome da disciplina: ")
+        
+        notas_disciplina = []
+        for i in range(4):
+            nota = float(input(f"Informe a nota {i+1} da disciplina {nome_disciplina}: "))
+            notas_disciplina.append(nota) 
+            print("-"*30)
+        media = sum(notas_disciplina) / 4
+        print(f"A média da disciplina {nome_disciplina} é: {media:.2f}")
+        disciplinas.append(nome_disciplina)
 
-    opcao = input("Deseja cadastrar outra disciplina?[S][N]? ")
-    if opcao.upper() == "N":
-        break
+        opcao = input("Deseja cadastrar outra disciplina?[S][N]? ")
+        if opcao.upper() == "N":
+            break   
+        print("-"*30)
+        opcao2 = input("Deseja cadastrar outro aluno?[S][N]? ")   
+        if opcao2.upper() == "N":
+            break
 
-print("-"*30)
-print(" Relatorio de Alunos cadastrados")
-print("-"*30)
-print(f"Aluno: {alunos['nome']}") 
-print(f"Idade: {alunos['idade']}")
-print(f"Sexo: {alunos['sexo']}")
-print(f"Série: {alunos['serie']}")  
-print(f"Disciplina: {nome_disciplina}")
-print(f"Notas: {notas}")    
-print(f"Média: {media:.2f}")
+        print([alunos, disciplinas, notas, media])
+        
+        
