@@ -46,36 +46,36 @@ def Triagem_Inicial():
                 return
             break
         except:
-            print("Erro, Escreva com numeros")
-    
- 
- 
+            print("Erro, escreva apenas com numero")
+
+
+
+
     while True:
         try:
-            idade=int(input("Qual sua idade?: "))
-            break
+
+            idade = int(input("Digite a sua idade (anos): "))
+            if idade < 16 or idade > 69:
+                print("não pode doar: A idade deve estar entre 16 e 69 anos.")
+                return
+                
+            elif idade >=16 and idade <=17: 
+                
+                    acompanhado=input("Você está acompanhado de um responsavel?(sim/nao):").lower()
+                    if acompanhado != 'sim' and acompanhado != "nao":
+                        print("Escreva com sim ou não")
+                    elif acompanhado == "nao":
+                            print("Você não pode doar deve estar acompanhado com um responsavel")
+                            return
+                    else:
+                        break
+            else:
+                break
         except:
-            print("Erro, Digite apenas numeros")
-    if idade >=16 and idade <=17:        
-        
-        while True:
-            acompanhado=input("Você está acompanhado de um responsavel?(sim/nao):").lower()
-            if acompanhado != 'sim' and acompanhado != "nao":
-                print("Escreva com sim ou não")
-            elif acompanhado == "nao":
-                print("Você não pode doar deve estar acompanhado com um responsavel")
-                return
-            else:
-                break
-        while True:
-            autorizacao=input("Você tem autorização de um responsavel?(sim/nao):").lower()
-            if autorizacao != 'sim' and autorizacao != "nao":
-                print("Escreva com sim ou não")
-            elif autorizacao == "nao": 
-                print("Você nao pode doar precisa da autorização do responsavel")
-                return
-            else:
-                break
+            print("Erro, escreva apenas com numero")
+
+
+
     while True:
         saude=input("Está gripado ou com infecção?(sim/nao)").lower()
         if saude != "sim" and saude != "nao":
