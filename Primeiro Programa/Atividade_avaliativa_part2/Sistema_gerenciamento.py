@@ -2,17 +2,27 @@
 
 alunos = []
 
+matriz = [[alunos]] #matriz
+
 
 def cadastrar_aluno():
+    nome = input("Nome do aluno: ")
+
+    for a in alunos:
+        if a["nome"].lower() == nome.lower():
+            print("Aluno já cadastrado!")
+            return
+
     aluno = {
-        "nome": input("Nome do aluno: "),
+        "nome": nome,
         "idade": int(input("Idade: ")),
         "turma": input("Turma: "),
-        "notas": [] 
+        "notas": []
     }
+
     alunos.append(aluno)
     print("Aluno cadastrado com sucesso!")
-
+    
 def lancar_notas():
     if len(alunos) == 0:
         print("Nenhum aluno cadastrado.")
@@ -23,7 +33,7 @@ def lancar_notas():
     for aluno in alunos:
         if aluno["nome"].lower() == nome.lower():
 
-            print(f"\nAluno encontrado: {aluno['nome']}")
+            print(f"Aluno encontrado: {aluno['nome']}")
 
             notas_aluno = []
 
@@ -40,21 +50,21 @@ def lancar_notas():
 
                 notas_aluno.append(nota)
 
-            aluno["notas"] = notas_aluno
+           
             print("Notas lançadas com sucesso!")
             return
 
     print("Aluno não encontrado.")
 
 
-def calcular_media(aluno):
-    if len(aluno["notas"]) == 0:
+def calcular_media_indice(i):
+    if len(notas[i]) == 0:
         return 0
-    return sum(aluno["notas"]) / len(aluno["notas"])
+    return sum(notas[i]) / len(notas[i])
 
+def situacao_indice(i):
+    media = calcular_media_indice(i)
 
-def situacao(aluno):
-    media = calcular_media(aluno)
     if media >= 7:
         return "Aprovado"
     elif media >= 5:
@@ -117,8 +127,10 @@ def relatorio_geral():
             pior_aluno = aluno["nome"]
 
     media_turma = soma_medias / len(alunos)
+    total_alunos = len(alunos)
 
     print("--- RELATÓRIO GERAL ---")
+    print("total de Alunos: ", total_alunos)
     print("Média da turma:", media_turma)
     print("Aprovados:", aprovados)
     print("Recuperação:", recuperacao)
@@ -129,24 +141,24 @@ def relatorio_geral():
 
 def salvar_dados():
     if len(alunos) == 0:
-        print("Nenhum aluno para salvar.")
+        print("Nenhum aluno cadastrado para salvar.")
         return
 
-    with open('C:/Users/vboxuser/Documents/alunos_cadastrados.txt', 'a', encoding='utf-8') as arquivo:
-        for aluno in alunos:
-            media = calcular_media(aluno)
-            linha = (
-                f"{aluno['nome']} | "
-                f"{aluno['idade']} | "
-                f"{aluno['turma']} | "
-                f"{aluno['notas']} | "
-                f"Média: {media} | "
-                f"{situacao(aluno)}\n"
-            )
-            arquivo.write(linha)
-
-    print("Dados salvos em alunos_cadastrados.txt")
-
+    try:
+        with open('C:/Users/vboxuser/Documents/alunos_cadastrados.txt', 'a', encoding='utf-8') as arquivo:
+            for aluno in alunos:
+                arquivo.write(
+                    aluno["nome"] + ";" +
+                    str(aluno["idade"]) + ";" +
+                    aluno["turma"] + ";" +
+                    str(aluno["notas"]) + ";" +
+                    str(calcular_media(aluno)) + ";" +
+                    situacao(aluno) + "\n"
+                )
+    except:
+        print("Erro ao salvar os alunos.")
+    else:
+        print("Todos os alunos foram salvos com sucesso!")
 
 def menu_principal():
     while True:
@@ -179,5 +191,5 @@ def menu_principal():
             break
         else:
             print("Opção inválida.")
-
+print(matriz)
 menu_principal()
